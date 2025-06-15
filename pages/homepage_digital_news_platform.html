@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TengriNews Modern - Kazakhstan's Premier Digital News Platform</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Stay informed with TengriNews Modern - Kazakhstan's leading digital news platform delivering breaking news, in-depth analysis, and real-time coverage across politics, economics, sports, and culture." />
+    <meta property="og:title" content="TengriNews Modern - Kazakhstan's Premier Digital News Platform" />
+    <meta property="og:description" content="Breaking news, expert analysis, and comprehensive coverage from Kazakhstan's most trusted digital news source." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2940&auto=format&fit=crop" />
+    <meta property="og:type" content="website" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftengrinews5665back.builtwithrocket.new&_v=0.1.2"></script>
+</head>
+<body class="bg-background text-text-primary">
+    <!-- Breaking News Ticker -->
+    <div id="breaking-ticker" class="bg-primary text-white py-2 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <span class="bg-accent px-3 py-1 rounded text-sm font-semibold mr-4 flex-shrink-0">BREAKING</span>
+                <div class="ticker-content animate-marquee whitespace-nowrap">
+                    <span class="mr-8">Kazakhstan announces new economic reforms targeting digital transformation</span>
+                    <span class="mr-8">Almaty hosts international climate summit with 50+ nations participating</span>
+                    <span class="mr-8">National football team advances to World Cup qualifiers final round</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-editorial border-b border-border-light sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-3 border-b border-border-light">
+                <div class="flex items-center space-x-6">
+                    <div class="text-sm text-text-secondary">
+                        <span id="current-date"></span> | <span id="current-time"></span>
+                    </div>
+                    <div class="text-sm text-text-secondary">
+                        Almaty: 15°C | Nur-Sultan: 8°C
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="lang-kz" onclick="switchLanguage('kz')" class="text-sm font-medium transition-colors" data-lang="kz" data-translate="login">ҚАЗ</button>
+                    <button id="lang-ru" onclick="switchLanguage('ru')" class="text-sm text-text-secondary hover:text-primary" data-lang="ru">РУС</button>
+                    <button id="lang-en" onclick="switchLanguage('en')" class="text-sm text-text-secondary hover:text-primary" data-lang="en">ENG</button>
+                    <div class="w-px h-4 bg-border-light"></div>
+                    <button class="text-sm text-primary hover:text-primary-700 font-medium" data-translate="login">Кіру</button>
+                    <button class="btn-primary text-sm px-4 py-2" data-translate="subscribe">Жазылу</button>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="homepage_digital_news_platform.html" class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.09-.64 3-1.22.91.58 1.91 1.01 3 1.22 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-bold text-primary">TengriNews</h1>
+                                <p class="text-xs text-text-secondary">Modern</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        <a href="homepage_digital_news_platform.html" class="nav-link-active" data-translate="home">Home</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="politics">Politics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="economics">Economics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="sports">Sports</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="technology">Technology</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="culture">Culture</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="international">International</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link" data-translate="opinion">Opinion</a>
+                        <a href="live_coverage_hub_real_time_events.html" class="nav-link text-accent font-semibold" data-translate="live">Live</a>
+                    </div>
+
+                    <!-- Search and Menu -->
+                    <div class="flex items-center space-x-4">
+                        <button onclick="toggleSearch()" class="p-2 text-text-secondary hover:text-primary transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="lg:hidden p-2 text-text-secondary hover:text-primary">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Bar (Hidden by default) -->
+                <div id="search-bar" class="hidden mt-4 pt-4 border-t border-border-light">
+                    <div class="relative max-w-2xl mx-auto">
+                        <input type="text" placeholder="Search news, topics, journalists..." class="form-input pr-12" />
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-primary">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Carousel Section -->
+    <section class="bg-white">
+        <div class="container mx-auto px-4 py-8">
+            <div class="relative overflow-hidden rounded-editorial-lg shadow-editorial-lg">
+                <div id="hero-carousel" class="flex transition-transform duration-500 ease-in-out">
+                    <!-- Featured Story 1 -->
+                    <div class="w-full flex-shrink-0 relative">
+                        <div class="aspect-w-16 aspect-h-9 lg:aspect-h-6">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2940&auto=format&fit=crop" alt="Kazakhstan Economic Summit" class="w-full h-96 lg:h-[500px] object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=2940'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                            <span class="inline-block bg-accent px-3 py-1 rounded text-sm font-semibold mb-3">ECONOMICS</span>
+                            <h2 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight">Kazakhstan Unveils Ambitious Digital Economy Roadmap for 2025-2030</h2>
+                            <p class="text-lg text-gray-200 mb-4 max-w-3xl">President announces comprehensive strategy to transform Kazakhstan into Central Asia's digital hub, targeting $50 billion in tech investments and creating 500,000 new jobs in the digital sector.</p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop" alt="Journalist" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_150.jpg'; this.onerror=null;" />
+                                    <span>Aida Nazarbayeva</span>
+                                </div>
+                                <span>•</span>
+                                <span>15 min read</span>
+                                <span>•</span>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Story 2 -->
+                    <div class="w-full flex-shrink-0 relative">
+                        <div class="aspect-w-16 aspect-h-9 lg:aspect-h-6">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=2940" alt="Climate Summit" class="w-full h-96 lg:h-[500px] object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2940&auto=format&fit=crop'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                            <span class="inline-block bg-success px-3 py-1 rounded text-sm font-semibold mb-3">ENVIRONMENT</span>
+                            <h2 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight">Almaty Climate Summit Achieves Historic Agreement on Central Asian Green Transition</h2>
+                            <p class="text-lg text-gray-200 mb-4 max-w-3xl">Five Central Asian nations commit to carbon neutrality by 2050, with Kazakhstan leading renewable energy initiatives and cross-border environmental cooperation frameworks.</p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_150.jpg" alt="Journalist" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                    <span>Dmitry Volkov</span>
+                                </div>
+                                <span>•</span>
+                                <span>12 min read</span>
+                                <span>•</span>
+                                <span>4 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation -->
+                <button onclick="previousSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <!-- Carousel Indicators -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <button onclick="goToSlide(0)" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 transition-opacity carousel-indicator active"></button>
+                    <button onclick="goToSlide(1)" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 transition-opacity carousel-indicator"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Left Column - Breaking News & Live Coverage -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Breaking News Section -->
+                <div class="content-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-primary" data-translate="breaking_news">Breaking News</h3>
+                        <span class="w-2 h-2 bg-error rounded-full animate-pulse"></span>
+                    </div>
+                    <div class="space-y-4">
+                        <article class="border-b border-border-light pb-4 last:border-b-0 last:pb-0">
+                            <span class="text-xs text-accent font-semibold">URGENT</span>
+                            <h4 class="font-semibold text-sm mt-1 mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    Parliament approves emergency economic measures amid global market volatility
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary">23 minutes ago</p>
+                        </article>
+                        <article class="border-b border-border-light pb-4 last:border-b-0 last:pb-0">
+                            <span class="text-xs text-warning font-semibold">DEVELOPING</span>
+                            <h4 class="font-semibold text-sm mt-1 mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    Major infrastructure project announced for Almaty-Nur-Sultan corridor
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary">1 hour ago</p>
+                        </article>
+                        <article>
+                            <span class="text-xs text-primary font-semibold">UPDATE</span>
+                            <h4 class="font-semibold text-sm mt-1 mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    International observers praise Kazakhstan's election transparency measures
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary">2 hours ago</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Live Coverage Widget -->
+                <div class="content-card p-6 border-l-4 border-accent">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-3 h-3 bg-accent rounded-full animate-pulse"></div>
+                        <h3 class="text-lg font-bold text-accent" data-translate="live_coverage">Live Coverage</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="text-sm">
+                            <p class="font-semibold mb-1">Economic Summit Day 2</p>
+                            <p class="text-text-secondary text-xs">Following live updates from the International Economic Forum</p>
+                            <a href="live_coverage_hub_real_time_events.html" class="text-accent text-xs font-medium hover:underline">Watch Live →</a>
+                        </div>
+                        <div class="text-sm">
+                            <p class="font-semibold mb-1">Parliament Session</p>
+                            <p class="text-text-secondary text-xs">Budget discussions and policy debates</p>
+                            <a href="live_coverage_hub_real_time_events.html" class="text-accent text-xs font-medium hover:underline">Follow Updates →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Topics -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4" data-translate="trending_now">Trending Now</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-primary font-bold text-sm">#1</span>
+                            <a href="search_archive_content_discovery.html" class="text-sm hover:text-primary transition-colors">Digital Economy</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-primary font-bold text-sm">#2</span>
+                            <a href="search_archive_content_discovery.html" class="text-sm hover:text-primary transition-colors">Climate Summit</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-primary font-bold text-sm">#3</span>
+                            <a href="search_archive_content_discovery.html" class="text-sm hover:text-primary transition-colors">Infrastructure</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-primary font-bold text-sm">#4</span>
+                            <a href="search_archive_content_discovery.html" class="text-sm hover:text-primary transition-colors">Elections 2025</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-primary font-bold text-sm">#5</span>
+                            <a href="search_archive_content_discovery.html" class="text-sm hover:text-primary transition-colors">Energy Transition</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Column - Featured Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Featured Long-form Journalism -->
+                <section>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold" data-translate="featured_stories">Featured Stories</h2>
+                        <a href="category_landing_specialized_news_verticals.html" class="text-primary font-medium hover:underline">View All</a>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Main Featured Article -->
+                        <article class="content-card overflow-hidden">
+                            <div class="md:flex">
+                                <div class="md:w-1/3">
+                                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=1000&auto=format&fit=crop" alt="Technology Innovation" class="w-full h-48 md:h-full object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1000'; this.onerror=null;" />
+                                </div>
+                                <div class="p-6 md:w-2/3">
+                                    <span class="text-category">TECHNOLOGY</span>
+                                    <h3 class="text-xl font-bold mt-2 mb-3 leading-tight">
+                                        <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                            Inside Kazakhstan's Silicon Valley: How Almaty is Becoming Central Asia's Tech Capital
+                                        </a>
+                                    </h3>
+                                    <p class="text-text-secondary mb-4">An in-depth investigation into the rapid growth of Kazakhstan's tech sector, featuring exclusive interviews with startup founders, government officials, and international investors shaping the digital future.</p>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <div class="flex items-center space-x-3">
+                                            <img src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_150.jpg" alt="Journalist" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                            <div>
+                                                <p class="font-medium">Sarah Chen</p>
+                                                <p class="text-xs text-text-secondary">Tech Reporter</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-text-secondary">
+                                            <span>20 min read • 6 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Secondary Featured Articles -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <article class="content-card overflow-hidden">
+                                <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports News" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=800&auto=format&fit=crop'; this.onerror=null;" />
+                                <div class="p-6">
+                                    <span class="text-category">SPORTS</span>
+                                    <h3 class="text-lg font-bold mt-2 mb-3 leading-tight">
+                                        <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                            Kazakhstan's Olympic Preparations: Athletes Ready for Paris 2024
+                                        </a>
+                                    </h3>
+                                    <p class="text-text-secondary text-sm mb-4">Exclusive behind-the-scenes access to Kazakhstan's Olympic training facilities and athlete preparation programs.</p>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Journalist" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_150.jpg'; this.onerror=null;" />
+                                            <span class="font-medium">Alex Petrov</span>
+                                        </div>
+                                        <span class="text-text-secondary">8 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="content-card overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f93e586?q=80&w=800&auto=format&fit=crop" alt="Culture News" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;" />
+                                <div class="p-6">
+                                    <span class="text-category">CULTURE</span>
+                                    <h3 class="text-lg font-bold mt-2 mb-3 leading-tight">
+                                        <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                            Preserving Nomadic Heritage: Kazakhstan's Cultural Renaissance
+                                        </a>
+                                    </h3>
+                                    <p class="text-text-secondary text-sm mb-4">How modern Kazakhstan is balancing rapid development with the preservation of its rich nomadic traditions and cultural identity.</p>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <div class="flex items-center space-x-2">
+                                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop" alt="Journalist" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_150.jpg'; this.onerror=null;" />
+            <span class="font-medium">Amina Sultanova</span>
+                                        </div>
+                                        <span class="text-text-secondary">12 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Newsletter Signup -->
+                <section class="bg-primary text-white rounded-editorial-lg p-8 text-center">
+                    <h3 class="text-2xl font-bold mb-4">Stay Ahead of the Story</h3>
+                    <p class="text-blue-100 mb-6 max-w-2xl mx-auto">Get exclusive analysis, breaking news alerts, and insider perspectives delivered to your inbox. Join 50,000+ informed readers who trust TengriNews Modern.</p>
+                    <form class="max-w-md mx-auto flex gap-3">
+                        <input type="email" placeholder="Enter your email address" class="flex-1 px-4 py-3 rounded-md text-text-primary" />
+                        <button type="submit" class="btn-accent px-6 py-3 whitespace-nowrap">Subscribe Now</button>
+                    </form>
+                    <p class="text-xs text-blue-200 mt-3">Free newsletter • Unsubscribe anytime • Privacy protected</p>
+                </section>
+            </div>
+
+            <!-- Right Column - Opinion & Multimedia -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Opinion Section -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span data-translate="opinion_analysis">Пікір және талдау</span>
+                    </h3>
+                    <div class="space-y-4">
+                        <!-- Enhanced articles with more detailed information -->
+                        <article class="border-b border-border-light pb-4">
+                            <span class="text-xs text-accent font-semibold" data-translate="editorial">РЕДАКЦИЯЛЫҚ</span>
+                            <h4 class="font-semibold text-sm mt-1 mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors" data-translate="digital_transformation_title">
+                                    Неліктен Қазақстанның цифрлық трансформациясы Орталық Азияны өзгерте алады
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary mb-2" data-translate="digital_transformation_desc">
+                                Амбициялы цифрлық экономика жол картасы экономикалық саясаттан гөрі көп нәрсені білдіреді — бұл Қазақстанның өңірдегі болашақ рөлі туралы геосаяси мәлімдеме.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2 text-xs">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop" alt="Columnist" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_150.jpg'; this.onerror=null;" />
+                                    <span class="font-medium">Д-р Елена Козлова</span>
+                                </div>
+                                <span class="text-xs text-text-secondary" data-translate="read_time">8 мин оқу</span>
+                            </div>
+                        </article>
+                        
+                        <article class="border-b border-border-light pb-4">
+                            <span class="text-xs text-primary font-semibold" data-translate="analysis">ТАЛДАУ</span>
+                            <h4 class="font-semibold text-sm mt-1 mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors" data-translate="green_energy_title">
+                                    Қазақстанның жасыл энергетика серпіні артындағы экономика
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary mb-2" data-translate="green_energy_desc">
+                                Жаңартылатын энергетикаға көшуді қозғайтын қаржылық салдарлар мен халықаралық серіктестікті талдау.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2 text-xs">
+                                    <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_150.jpg" alt="Analyst" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                    <span class="font-medium">Маркус Вебер</span>
+                                </div>
+                                <span class="text-xs text-text-secondary" data-translate="read_time">12 мин оқу</span>
+                            </div>
+                        </article>
+
+                        <article>
+                            <span class="text-xs text-success font-semibold" data-translate="guest_column">ҚОНАҚ БАҒАНЫ</span>
+                            <h4 class="font-semibold text-sm mt-1 mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors" data-translate="diplomat_view_title">
+                                    Дипломаттың көзқарасы: Қазақстанның өсіп келе жатқан халықаралық ықпалы
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary mb-2" data-translate="diplomat_view_desc">
+                                Бұрынғы елші Қазақстанның халықаралық дипломатиядағы дамып келе жатқан рөлі және өңірлік көшбасшылық туралы түсініктерімен бөліседі.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2 text-xs">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop" alt="Guest Writer" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_150.jpg'; this.onerror=null;" />
+                                    <span class="font-medium">Елші Рита Сингх</span>
+                                </div>
+                                <span class="text-xs text-text-secondary" data-translate="read_time">15 мин оқу</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Multimedia Content -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <span data-translate="multimedia">Multimedia</span>
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=400&auto=format&fit=crop" alt="Video Thumbnail" class="w-full h-32 object-cover rounded-md" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400'; this.onerror=null;" />
+                            <div class="absolute inset-0 bg-black/30 rounded-md flex items-center justify-center">
+                                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">5:42</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-sm mb-1">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    Documentary: The New Silk Road Through Kazakhstan
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary">Exploring how modern trade routes are reshaping Kazakhstan's economic landscape and connecting East to West.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Widget -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Weather</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <div>
+                                    <p class="font-semibold">Almaty</p>
+                                    <p class="text-xs text-text-secondary">Sunny</p>
+                                </div>
+                            </div>
+                            <span class="text-2xl font-bold">15°C</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-8 h-8 text-secondary-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1H6v1zm2.5-5.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm3.5 0c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"/>
+                                </svg>
+                                <div>
+                                    <p class="font-semibold">Nur-Sultan</p>
+                                    <p class="text-xs text-text-secondary">Cloudy</p>
+                                </div>
+                            </div>
+                            <span class="text-2xl font-bold">8°C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Quick Access</h3>
+                    <div class="space-y-2">
+                        <a href="search_archive_content_discovery.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">📰 News Archive</a>
+                        <a href="about_editorial_standards_trust_building.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">ℹ️ About Us</a>
+                        <a href="about_editorial_standards_trust_building.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">📧 Contact Newsroom</a>
+                        <a href="about_editorial_standards_trust_building.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">🔍 Editorial Standards</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">📱 Mobile App</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.09-.64 3-1.22.91.58 1.91 1.01 3 1.22 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">TengriNews Modern</h3>
+                        </div>
+                    </div>
+                    <p class="text-secondary-300 text-sm mb-4" data-translate="trusted_journalism">Kazakhstan's premier digital news platform delivering authoritative journalism and real-time coverage across all major topics.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.222.085.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4" data-translate="news_categories">News Categories</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="politics">Politics</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="economics">Economics</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="sports">Sports</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="technology">Technology</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="culture">Culture</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="international">International</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-semibold mb-4" data-translate="services">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="live_coverage_hub_real_time_events.html" class="text-secondary-300 hover:text-white transition-colors" data-translate="live_coverage">Live Coverage</a></li>
+                        <li><a href="search_archive_content_discovery.html" class="text-secondary-300 hover:text-white transition-colors">News Archive</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Newsletter</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Mobile App</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">RSS Feeds</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Press Releases</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Legal -->
+                <div>
+                    <h4 class="font-semibold mb-4" data-translate="company">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Editorial Standards</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-secondary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-secondary-400 text-sm">© 2025 TengriNews Modern. All Rights Reserved.</p>
+                <p class="text-secondary-400 text-sm mt-2 md:mt-0" data-translate="trusted_journalism">Trusted journalism for informed citizens</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Breaking news ticker animation
+        function animateTicker() {
+            const ticker = document.querySelector('.ticker-content');
+            if (ticker) {
+                ticker.style.animation = 'none';
+                ticker.offsetHeight; // Trigger reflow
+                ticker.style.animation = 'marquee 60s linear infinite';
+            }
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('#hero-carousel > div');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+
+        function showSlide(index) {
+            const carousel = document.getElementById('hero-carousel');
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+            
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('opacity-100', i === index);
+                indicator.classList.toggle('opacity-50', i !== index);
+                indicator.classList.toggle('active', i === index);
+            });
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 8000);
+
+        // Search functionality
+        function toggleSearch() {
+            const searchBar = document.getElementById('search-bar');
+            searchBar.classList.toggle('hidden');
+            if (!searchBar.classList.contains('hidden')) {
+                searchBar.querySelector('input').focus();
+            }
+        }
+
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                timeZone: 'Asia/Almaty'
+            };
+            
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions) + ' ALMT';
+        }
+
+        // Add CSS for marquee animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes marquee {
+                0% { transform: translateX(100%); }
+                100% { transform: translateX(-100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <script>
+// Language data object with translations for Kazakh, Russian, and English
+const translations = {
+    kz: {
+        // Header and navigation
+        login: "Кіру",
+        subscribe: "Жазылу",
+        home: "Басты бет",
+        politics: "Саясат",
+        economics: "Экономика",
+        sports: "Спорт",
+        technology: "Технология",
+        culture: "Мәдениет",
+        international: "Халықаралық",
+        opinion: "Пікір",
+        live: "Тікелей",
+        
+        // Content sections
+        breaking_news: "Жедел жаңалықтар",
+        live_coverage: "Тікелей хабарлар",
+        trending_now: "Қазір тренд",
+        featured_stories: "Ерекше материалдар",
+        multimedia: "Мультимедиа",
+        opinion_analysis: "Пікір және талдау",
+        
+        // Articles
+        editorial: "РЕДАКЦИЯЛЫҚ",
+        analysis: "ТАЛДАУ",
+        guest_column: "ҚОНАҚ БАҒАНЫ",
+        read_time: "мин оқу",
+        
+        // Enhanced content
+        digital_transformation_title: "Неліктен Қазақстанның цифрлық трансформациясы Орталық Азияны өзгерте алады",
+        digital_transformation_desc: "Амбициялы цифрлық экономика жол картасы экономикалық саясаттан гөрі көп нәрсені білдіреді — бұл Қазақстанның өңірдегі болашақ рөлі туралы геосаяси мәлімдеме.",
+        green_energy_title: "Қазақстанның жасыл энергетика серпіні артындағы экономика",
+        green_energy_desc: "Жаңартылатын энергетикаға көшуді қозғайтын қаржылық салдарлар мен халықаралық серіктестікті талдау.",
+        diplomat_view_title: "Дипломаттың көзқарасы: Қазақстанның өсіп келе жатқан халықаралық ықпалы",
+        diplomat_view_desc: "Бұрынғы елші Қазақстанның халықаралық дипломатиядағы дамып келе жатқан рөлі және өңірлік көшбасшылық туралы түсініктерімен бөліседі.",
+        
+        // Footer
+        news_categories: "Жаңалық санаттары",
+        services: "Қызметтер",
+        company: "Компания",
+        trusted_journalism: "Хабардар азаматтар үшін сенімді журналистика"
+    },
+    
+    ru: {
+        // Header and navigation
+        login: "Войти",
+        subscribe: "Подписаться",
+        home: "Главная",
+        politics: "Политика",
+        economics: "Экономика",
+        sports: "Спорт",
+        technology: "Технологии",
+        culture: "Культура",
+        international: "Международное",
+        opinion: "Мнение",
+        live: "Прямой эфир",
+        
+        // Content sections
+        breaking_news: "Срочные новости",
+        live_coverage: "Прямая трансляция",
+        trending_now: "Сейчас в тренде",
+        featured_stories: "Главные материалы",
+        multimedia: "Мультимедиа",
+        opinion_analysis: "Мнение и анализ",
+        
+        // Articles
+        editorial: "РЕДАКЦИОННАЯ",
+        analysis: "АНАЛИЗ",
+        guest_column: "ГОСТЕВАЯ КОЛОНКА",
+        read_time: "мин чтения",
+        
+        // Enhanced content
+        digital_transformation_title: "Почему цифровая трансформация Казахстана может изменить Центральную Азию",
+        digital_transformation_desc: "Амбициозная дорожная карта цифровой экономики представляет больше, чем экономическую политику — это геополитическое заявление о будущей роли Казахстана в регионе.",
+        green_energy_title: "Экономика зеленого энергетического рывка Казахстана",
+        green_energy_desc: "Анализ финансовых последствий и международных партнерств, движущих переходом к возобновляемой энергетике.",
+        diplomat_view_title: "Взгляд дипломата: Растущее международное влияние Казахстана",
+        diplomat_view_desc: "Бывший посол делится взглядами на развивающуюся роль Казахстана в международной дипломатии и региональном лидерстве.",
+        
+        // Footer
+        news_categories: "Категории новостей",
+        services: "Услуги",
+        company: "Компания",
+        trusted_journalism: "Надежная журналистика для информированных граждан"
+    },
+    
+    en: {
+        // Header and navigation
+        login: "Login",
+        subscribe: "Subscribe",
+        home: "Home",
+        politics: "Politics",
+        economics: "Economics",
+        sports: "Sports",
+        technology: "Technology",
+        culture: "Culture",
+        international: "International",
+        opinion: "Opinion",
+        live: "Live",
+        
+        // Content sections
+        breaking_news: "Breaking News",
+        live_coverage: "Live Coverage",
+        trending_now: "Trending Now",
+        featured_stories: "Featured Stories",
+        multimedia: "Multimedia",
+        opinion_analysis: "Opinion & Analysis",
+        
+        // Articles
+        editorial: "EDITORIAL",
+        analysis: "ANALYSIS",
+        guest_column: "GUEST COLUMN",
+        read_time: "min read",
+        
+        // Enhanced content
+        digital_transformation_title: "Why Kazakhstan's Digital Transformation Could Reshape Central Asia",
+        digital_transformation_desc: "The ambitious digital economy roadmap represents more than economic policy—it's a geopolitical statement about Kazakhstan's future role in the region.",
+        green_energy_title: "The Economics Behind Kazakhstan's Green Energy Push",
+        green_energy_desc: "Breaking down the financial implications and international partnerships driving the renewable energy transition.",
+        diplomat_view_title: "A Diplomat's View: Kazakhstan's Growing International Influence",
+        diplomat_view_desc: "Former ambassador shares insights on Kazakhstan's evolving role in international diplomacy and regional leadership.",
+        
+        // Footer
+        news_categories: "News Categories",
+        services: "Services",
+        company: "Company",
+        trusted_journalism: "Trusted journalism for informed citizens"
+    }
+};
+
+// Current language state
+let currentLanguage = localStorage.getItem('selectedLanguage') || 'kz';
+
+// Function to switch language
+function switchLanguage(lang) {
+    if (!translations[lang]) {
+        console.warn(`Language '${lang}' not supported`);
+        return;
+    }
+    
+    currentLanguage = lang;
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Update button states
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.classList.remove('text-primary', 'font-medium');
+        btn.classList.add('text-text-secondary');
+    });
+    
+    const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+    if (activeBtn) {
+        activeBtn.classList.remove('text-text-secondary');
+        activeBtn.classList.add('text-primary', 'font-medium');
+    }
+    
+    // Update all translatable elements
+    updateTranslations(lang);
+    
+    // Update page language attribute
+    document.documentElement.lang = lang;
+}
+
+// Function to update translations
+function updateTranslations(lang) {
+    const langData = translations[lang];
+    
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (langData[key]) {
+            element.textContent = langData[key];
+        }
+    });
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', function() {
+    switchLanguage(currentLanguage);
+    updateDateTime();
+    setInterval(updateDateTime, 60000);
+    animateTicker();
+});
+</script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

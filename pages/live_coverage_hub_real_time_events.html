@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Coverage Hub - TengriNews Modern</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Follow breaking news and major events in real-time with TengriNews Modern's live coverage hub. Get instant updates, expert analysis, and multimedia coverage." />
+    <meta property="og:title" content="Live Coverage Hub - TengriNews Modern" />
+    <meta property="og:description" content="Real-time coverage of breaking news and major events with instant updates and expert analysis." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2940&auto=format&fit=crop" />
+    <meta property="og:type" content="website" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftengrinews5665back.builtwithrocket.new&_v=0.1.2"></script>
+</head>
+<body class="bg-background text-text-primary">
+    <!-- Live Coverage Status Banner -->
+    <div id="live-banner" class="bg-error text-white py-3 sticky top-0 z-50 shadow-editorial-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                        <span class="font-bold text-sm">LIVE COVERAGE</span>
+                    </div>
+                    <div class="hidden md:block text-sm">
+                        <span>Kazakhstan Economic Summit 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>Last update: <span id="last-update">2 minutes ago</span></span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="toggleNotifications()" class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-sm transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                        </svg>
+                        <span class="hidden sm:inline">Alerts</span>
+                    </button>
+                    <button onclick="shareEvent()" class="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-sm transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                        </svg>
+                        <span class="hidden sm:inline">Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-editorial border-b border-border-light">
+        <div class="container mx-auto px-4">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-3 border-b border-border-light">
+                <div class="flex items-center space-x-6">
+                    <div class="text-sm text-text-secondary">
+                        <span id="current-date"></span> | <span id="current-time"></span>
+                    </div>
+                    <div class="text-sm text-text-secondary">
+                        Almaty: 15°C | Nur-Sultan: 8°C
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="lang-kz" onclick="switchLanguage('kz')" class="text-sm font-medium transition-colors" data-lang="kz">ҚАЗ</button>
+                    <button id="lang-ru" onclick="switchLanguage('ru')" class="text-sm text-text-secondary hover:text-primary" data-lang="ru">РУС</button>
+                    <button id="lang-en" onclick="switchLanguage('en')" class="text-sm text-text-secondary hover:text-primary" data-lang="en">ENG</button>
+                    <div class="w-px h-4 bg-border-light"></div>
+                    <button class="text-sm text-primary hover:text-primary-700 font-medium" data-translate="login">Кіру</button>
+                    <button class="btn-primary text-sm px-4 py-2" data-translate="subscribe">Жазылу</button>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="homepage_digital_news_platform.html" class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.09-.64 3-1.22.91.58 1.91 1.01 3 1.22 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-bold text-primary">TengriNews</h1>
+                                <p class="text-xs text-text-secondary">Modern</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        <a href="homepage_digital_news_platform.html" class="nav-link">Home</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Politics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Economics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Sports</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Technology</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Culture</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">International</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Opinion</a>
+                        <a href="live_coverage_hub_real_time_events.html" class="nav-link-active text-accent font-semibold">Live</a>
+                    </div>
+
+                    <!-- Search and Menu -->
+                    <div class="flex items-center space-x-4">
+                        <button onclick="toggleSearch()" class="p-2 text-text-secondary hover:text-primary transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="lg:hidden p-2 text-text-secondary hover:text-primary">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Bar (Hidden by default) -->
+                <div id="search-bar" class="hidden mt-4 pt-4 border-t border-border-light">
+                    <div class="relative max-w-2xl mx-auto">
+                        <input type="text" placeholder="Search live coverage, events, updates..." class="form-input pr-12" />
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-primary">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Enhanced Active Live Events -->
+        <section class="mb-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <div class="w-3 h-3 bg-accent rounded-full animate-pulse mr-3"></div>
+                        <span data-translate="active_events">Белсенді тікелей оқиғалар</span>
+                    </h2>
+                    <div class="flex items-center space-x-2 text-sm text-text-secondary">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span data-translate="auto_update">Автоматты жаңарту: 30 сек</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Live Event 1: Economic Forum -->
+                    <div class="content-card p-6 border-l-4 border-accent">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                                <span class="text-accent font-semibold text-sm" data-translate="live_now">ТІКЕЛЕЙ ЭФИР</span>
+                            </div>
+                            <span class="text-xs text-text-secondary" data-translate="viewers">2.3К көрермен</span>
+                        </div>
+                        <h3 class="font-bold mb-3" data-translate="economic_forum_title">Халықаралық экономикалық форум</h3>
+                        <p class="text-sm text-text-secondary mb-4" data-translate="economic_forum_desc">
+                            Президент Тоқаев пен халықаралық инвесторлар цифрлық экономика мен жасыл технологиялар туралы талқылауда.
+                        </p>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 6.5 15.5 8zM12 17l-4-2v-3l4 2 4-2v3l-4 2z"/>
+                                </svg>
+                                <span class="text-text-secondary" data-translate="location_almaty">Алматы, Риксос қонақ үйі</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="text-text-secondary" data-translate="started_time">09:00-ден бастап</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-accent text-xs px-4 py-2 mt-4 w-full text-center block" data-translate="watch_live">Тікелей көру</a>
+                    </div>
+
+                    <!-- Live Event 2: Parliament Session -->
+                    <div class="content-card p-6 border-l-4 border-primary">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                                <span class="text-primary font-semibold text-sm" data-translate="live_now">ТІКЕЛЕЙ ЭФИР</span>
+                            </div>
+                            <span class="text-xs text-text-secondary" data-translate="viewers">1.8К көрермен</span>
+                        </div>
+                        <h3 class="font-bold mb-3" data-translate="parliament_session_title">Парламент отырысы</h3>
+                        <p class="text-sm text-text-secondary mb-4" data-translate="parliament_session_desc">
+                            2025 жылға арналған мемлекеттік бюджет туралы заң жобасын қарау және талқылау.
+                        </p>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 6.5 15.5 8zM12 17l-4-2v-3l4 2 4-2v3l-4 2z"/>
+                                </svg>
+                                <span class="text-text-secondary" data-translate="location_parliament">Нұр-Сұлтан, Парламент үйі</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="text-text-secondary" data-translate="started_time">10:30-дан бастап</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-primary text-xs px-4 py-2 mt-4 w-full text-center block" data-translate="watch_live">Тікелей көру</a>
+                    </div>
+
+                    <!-- Live Event 3: Sports Championship -->
+                    <div class="content-card p-6 border-l-4 border-success">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                                <span class="text-success font-semibold text-sm" data-translate="live_now">ТІКЕЛЕЙ ЭФИР</span>
+                            </div>
+                            <span class="text-xs text-text-secondary" data-translate="viewers">5.1К көрермен</span>
+                        </div>
+                        <h3 class="font-bold mb-3" data-translate="sports_championship_title">Қазақстан чемпионаты</h3>
+                        <p class="text-sm text-text-secondary mb-4" data-translate="sports_championship_desc">
+                            Футбол бойынша Қазақстан чемпионатының финалдық ойыны: "Қайрат" мен "Ордабасы" командалары.
+                        </p>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 6.5 15.5 8zM12 17l-4-2v-3l4 2 4-2v3l-4 2z"/>
+                                </svg>
+                                <span class="text-text-secondary" data-translate="location_stadium">Алматы, Орталық стадион</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="text-text-secondary" data-translate="current_score">Ағымдағы есеп: 2-1</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-secondary text-xs px-4 py-2 mt-4 w-full text-center block" data-translate="watch_live">Тікелей көру</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Main Live Timeline -->
+            <div class="lg:col-span-3">
+                <!-- Event Header -->
+                <div class="content-card p-6 mb-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h1 class="text-3xl font-bold mb-2">Kazakhstan Economic Summit 2025</h1>
+                            <p class="text-text-secondary mb-4">Live coverage of the International Economic Forum featuring world leaders, business executives, and policy makers discussing Kazakhstan's digital transformation and regional economic cooperation.</p>
+                            <div class="flex items-center space-x-4 text-sm">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                    <span class="font-medium">Started: Today, 9:00 AM ALMT</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    <span>Almaty International Convention Center</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-error text-white px-3 py-1 rounded-full text-sm font-semibold">LIVE</span>
+                            <span class="text-sm text-text-secondary">1,247 watching</span>
+                        </div>
+                    </div>
+
+                    <!-- Key Highlights -->
+                    <div class="bg-accent-50 border-l-4 border-accent p-4 rounded-r-md">
+                        <h3 class="font-semibold text-accent-700 mb-2">Key Developments</h3>
+                        <ul class="space-y-1 text-sm">
+                            <li>• President announces $50B digital economy investment plan</li>
+                            <li>• New international tech partnerships with Singapore and UAE</li>
+                            <li>• Green energy transition timeline accelerated to 2030</li>
+                            <li>• Regional cooperation framework signed with Central Asian nations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Live Timeline -->
+                <div class="space-y-4" id="live-timeline">
+                    <!-- Live Update Item -->
+                    <article class="content-card p-6 border-l-4 border-accent">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                                <span class="text-sm font-semibold text-accent">BREAKING</span>
+                                <span class="text-sm text-text-secondary">2 minutes ago</span>
+                            </div>
+                            <button onclick="shareUpdate()" class="text-text-secondary hover:text-primary">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">President Announces Historic $50 Billion Digital Economy Investment</h3>
+                        <p class="text-text-secondary mb-4">In a major policy announcement, President Tokayev unveiled Kazakhstan's most ambitious digital transformation initiative, targeting $50 billion in investments over the next five years. The comprehensive plan includes AI research centers, 5G infrastructure, and digital skills training for 2 million citizens.</p>
+                        <div class="mb-4">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop" alt="President speaking at summit" class="w-full h-64 object-cover rounded-md" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;" />
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop" alt="Reporter" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_150.jpg'; this.onerror=null;" />
+                                <div>
+                                    <p class="font-medium">Aida Nazarbayeva</p>
+                                    <p class="text-xs text-text-secondary">Senior Political Reporter</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <button class="flex items-center space-x-1 text-text-secondary hover:text-primary">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>24</span>
+                                </button>
+                                <button class="flex items-center space-x-1 text-text-secondary hover:text-primary">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M21 6h-2l-1-2H6L5 6H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                                    </svg>
+                                    <span>View Photos</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Regular Update Item -->
+                    <article class="content-card p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm font-semibold text-primary">UPDATE</span>
+                                <span class="text-sm text-text-secondary">15 minutes ago</span>
+                            </div>
+                            <button onclick="shareUpdate()" class="text-text-secondary hover:text-primary">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">International Tech Giants Announce Kazakhstan Partnerships</h3>
+                        <p class="text-text-secondary mb-4">Microsoft, Google, and Samsung have signed memorandums of understanding to establish regional headquarters and R&D centers in Almaty and Nur-Sultan. The partnerships are expected to create over 10,000 high-tech jobs by 2027.</p>
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_150.jpg" alt="Reporter" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                <div>
+                                    <p class="font-medium">Dmitry Volkov</p>
+                                    <p class="text-xs text-text-secondary">Technology Correspondent</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <button class="flex items-center space-x-1 text-text-secondary hover:text-primary">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>18</span>
+                                </button>
+                                <a href="article_page_immersive_storytelling.html" class="text-primary hover:underline">Read Full Analysis</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Social Media Integration -->
+                    <article class="content-card p-6 bg-secondary-50">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-secondary rounded-full"></div>
+                                <span class="text-sm font-semibold text-secondary">SOCIAL</span>
+                                <span class="text-sm text-text-secondary">22 minutes ago</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                                <span class="text-xs text-primary font-medium">VERIFIED</span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-md border border-border-light">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Official Account" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_150.jpg'; this.onerror=null;" />
+                                <div>
+                                    <p class="font-semibold text-sm">@PresidentKZ</p>
+                                    <p class="text-xs text-text-secondary">Official Account</p>
+                                </div>
+                            </div>
+                            <p class="text-sm mb-3">"Today marks a historic milestone for Kazakhstan's digital future. Our $50B investment will position us as Central Asia's technology leader and create unprecedented opportunities for our citizens. #DigitalKazakhstan #Innovation"</p>
+                            <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                <span>2.1K retweets</span>
+                                <span>5.7K likes</span>
+                                <span>847 replies</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Interactive Poll -->
+                    <article class="content-card p-6 bg-primary-50">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm font-semibold text-primary">READER POLL</span>
+                                <span class="text-sm text-text-secondary">Live Results</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">How will the digital economy investment impact your industry?</h3>
+                        <div class="space-y-3 mb-4">
+                            <div class="poll-option" onclick="vote('positive')">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-medium">Very positive impact</span>
+                                    <span class="text-sm text-text-secondary">45%</span>
+                                </div>
+                                <div class="w-full bg-secondary-200 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="poll-option" onclick="vote('somewhat')">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-medium">Somewhat positive</span>
+                                    <span class="text-sm text-text-secondary">32%</span>
+                                </div>
+                                <div class="w-full bg-secondary-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 32%"></div>
+                                </div>
+                            </div>
+                            <div class="poll-option" onclick="vote('neutral')">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-medium">Neutral/Uncertain</span>
+                                    <span class="text-sm text-text-secondary">18%</span>
+                                </div>
+                                <div class="w-full bg-secondary-200 rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 18%"></div>
+                                </div>
+                            </div>
+                            <div class="poll-option" onclick="vote('negative')">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-medium">Limited impact</span>
+                                    <span class="text-sm text-text-secondary">5%</span>
+                                </div>
+                                <div class="w-full bg-secondary-200 rounded-full h-2">
+                                    <div class="bg-error h-2 rounded-full" style="width: 5%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-text-secondary">1,247 votes • Poll closes in 2 hours</p>
+                    </article>
+
+                    <!-- Load More Button -->
+                    <div class="text-center py-6">
+                        <button onclick="loadMoreUpdates()" class="btn-secondary">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            Load Earlier Updates
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Event Context -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Event Context</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-sm mb-2">Background</h4>
+                            <p class="text-xs text-text-secondary mb-3">The Kazakhstan Economic Summit 2025 brings together 500+ delegates from 50 countries to discuss digital transformation, sustainable development, and regional cooperation.</p>
+                            <a href="article_page_immersive_storytelling.html" class="text-primary text-xs hover:underline">Read Background Article →</a>
+                        </div>
+                        <div class="border-t border-border-light pt-4">
+                            <h4 class="font-semibold text-sm mb-2">Key Participants</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="President" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_150.jpg'; this.onerror=null;" />
+                                    <span class="text-xs">President Kassym-Jomart Tokayev</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_150.jpg" alt="Minister" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                    <span class="text-xs">Minister of Digital Development</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_150.jpg" alt="CEO" class="w-6 h-6 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                    <span class="text-xs">International Tech CEOs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Alert Preferences</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" checked class="form-checkbox text-primary" />
+                            <span class="text-sm">Breaking news alerts</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" checked class="form-checkbox text-primary" />
+                            <span class="text-sm">Major announcements</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" class="form-checkbox text-primary" />
+                            <span class="text-sm">All updates</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" class="form-checkbox text-primary" />
+                            <span class="text-sm">Social media mentions</span>
+                        </label>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                        <p class="text-xs text-text-secondary mb-2">Update frequency:</p>
+                        <select class="form-input text-sm">
+                            <option>Real-time</option>
+                            <option>Every 5 minutes</option>
+                            <option>Every 15 minutes</option>
+                            <option>Hourly digest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Related Coverage -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Related Coverage</h3>
+                    <div class="space-y-4">
+                        <article class="border-b border-border-light pb-4 last:border-b-0 last:pb-0">
+                            <h4 class="font-semibold text-sm mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    Kazakhstan's Digital Strategy: A Five-Year Roadmap
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary mb-2">Comprehensive analysis of the government's digital transformation plans and their economic implications.</p>
+                            <span class="text-xs text-primary">In-depth Analysis</span>
+                        </article>
+                        <article class="border-b border-border-light pb-4 last:border-b-0 last:pb-0">
+                            <h4 class="font-semibold text-sm mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    Tech Giants Eye Central Asian Markets
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary mb-2">Why international technology companies are increasingly interested in Kazakhstan and regional expansion opportunities.</p>
+                            <span class="text-xs text-accent">Business Focus</span>
+                        </article>
+                        <article>
+                            <h4 class="font-semibold text-sm mb-2 leading-tight">
+                                <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                    Previous Economic Summits: Impact Assessment
+                                </a>
+                            </h4>
+                            <p class="text-xs text-text-secondary mb-2">Historical perspective on Kazakhstan's economic forums and their long-term effects on policy and investment.</p>
+                            <span class="text-xs text-secondary">Historical Context</span>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Live Stats -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Live Statistics</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Active Readers</span>
+                            <span class="font-semibold">1,247</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Updates Posted</span>
+                            <span class="font-semibold">23</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Social Shares</span>
+                            <span class="font-semibold">892</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">Comments</span>
+                            <span class="font-semibold">156</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Quick Access</h3>
+                    <div class="space-y-2">
+                        <a href="homepage_digital_news_platform.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">🏠 Homepage</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">💼 Economics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">🏛️ Politics</a>
+                        <a href="search_archive_content_discovery.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">🔍 Search Archive</a>
+                        <a href="about_editorial_standards_trust_building.html" class="block text-sm text-text-secondary hover:text-primary transition-colors">ℹ️ About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.09-.64 3-1.22.91.58 1.91 1.01 3 1.22 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">TengriNews Modern</h3>
+                        </div>
+                    </div>
+                    <p class="text-secondary-300 text-sm mb-4">Kazakhstan's premier digital news platform delivering authoritative journalism and real-time coverage across all major topics.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.222.085.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">News Categories</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Politics</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Economics</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Sports</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Technology</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Culture</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">International</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="live_coverage_hub_real_time_events.html" class="text-secondary-300 hover:text-white transition-colors">Live Coverage</a></li>
+                        <li><a href="search_archive_content_discovery.html" class="text-secondary-300 hover:text-white transition-colors">News Archive</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Newsletter</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Mobile App</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">RSS Feeds</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Press Releases</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Legal -->
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Editorial Standards</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-secondary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-secondary-400 text-sm">© 2025 TengriNews Modern. All Rights Reserved.</p>
+                <p class="text-secondary-400 text-sm mt-2 md:mt-0">Trusted journalism for informed citizens</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Live update functionality
+        let updateInterval;
+        let lastUpdateTime = new Date();
+
+        function startLiveUpdates() {
+            updateInterval = setInterval(() => {
+                updateLastUpdateTime();
+                // Simulate new updates (in real app, this would fetch from API)
+                if (Math.random() > 0.7) {
+                    addNewUpdate();
+                }
+            }, 30000); // Check every 30 seconds
+        }
+
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const diff = Math.floor((now - lastUpdateTime) / 60000); // minutes
+            const updateElement = document.getElementById('last-update');
+            if (updateElement) {
+                if (diff < 1) {
+                    updateElement.textContent = 'Just now';
+                } else if (diff === 1) {
+                    updateElement.textContent = '1 minute ago';
+                } else {
+                    updateElement.textContent = `${diff} minutes ago`;
+                }
+            }
+        }
+
+        function addNewUpdate() {
+            // Simulate adding a new update to the timeline
+            const timeline = document.getElementById('live-timeline');
+            const newUpdate = createUpdateElement();
+            timeline.insertBefore(newUpdate, timeline.firstChild);
+            lastUpdateTime = new Date();
+            
+            // Show notification
+            showUpdateNotification();
+        }
+
+        function createUpdateElement() {
+            const article = document.createElement('article');
+            article.className = 'content-card p-6 border-l-4 border-primary animate-slide-down';
+            article.innerHTML = `
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                        <span class="text-sm font-semibold text-primary">UPDATE</span>
+                        <span class="text-sm text-text-secondary">Just now</span>
+                    </div>
+                    <button onclick="shareUpdate()" class="text-text-secondary hover:text-primary">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                        </svg>
+                    </button>
+                </div>
+                <h3 class="text-lg font-bold mb-3">New Development in Economic Summit</h3>
+                <p class="text-text-secondary mb-4">Additional details emerging from the ongoing discussions...</p>
+            `;
+            return article;
+        }
+
+        function showUpdateNotification() {
+            // Create and show a subtle notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-primary text-white px-4 py-2 rounded-md shadow-lg z-50 animate-slide-down';
+            notification.innerHTML = 'New update available';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const searchBar = document.getElementById('search-bar');
+            searchBar.classList.toggle('hidden');
+            if (!searchBar.classList.contains('hidden')) {
+                searchBar.querySelector('input').focus();
+            }
+        }
+
+        // Notification controls
+        function toggleNotifications() {
+            // Toggle notification preferences
+            alert('Notification preferences updated');
+        }
+
+        // Share functionality
+        function shareEvent() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Kazakhstan Economic Summit 2025 - Live Coverage',
+                    text: 'Follow the live coverage of Kazakhstan Economic Summit 2025',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard');
+            }
+        }
+
+        function shareUpdate() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Live Update - Kazakhstan Economic Summit',
+                    text: 'Latest update from the Kazakhstan Economic Summit',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard');
+            }
+        }
+
+        // Poll voting
+        function vote(option) {
+            // Simulate voting
+            alert(`Thank you for voting: ${option}`);
+        }
+
+        // Load more updates
+        function loadMoreUpdates() {
+            // Simulate loading more historical updates
+            alert('Loading more updates...');
+        }
+
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                timeZone: 'Asia/Almaty'
+            };
+            
+            const dateElement = document.getElementById('current-date');
+            const timeElement = document.getElementById('current-time');
+            
+            if (dateElement) {
+                dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+            }
+            if (timeElement) {
+                timeElement.textContent = now.toLocaleTimeString('en-US', timeOptions) + ' ALMT';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            setInterval(updateDateTime, 60000); // Update every minute
+            startLiveUpdates();
+            updateLastUpdateTime();
+            setInterval(updateLastUpdateTime, 60000); // Update every minute
+        });
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            if (updateInterval) {
+                clearInterval(updateInterval);
+            }
+        });
+    </script>
+
+    <script>
+// Live coverage translations
+const liveTranslations = {
+    kz: {
+        login: "Кіру",
+        subscribe: "Жазылу",
+        live_coverage: "Тікелей хабарлар",
+        active_events: "Белсенді тікелей оқиғалар",
+        auto_update: "Автоматты жаңарту: 30 сек",
+        live_now: "ТІКЕЛЕЙ ЭФИР",
+        viewers: "көрермен",
+        watch_live: "Тікелей көру",
+        started_time: "бастап",
+        current_score: "Ағымдағы есеп: 2-1",
+        
+        // Event details
+        economic_forum_title: "Халықаралық экономикалық форум",
+        economic_forum_desc: "Президент Тоқаев пен халықаралық инвесторлар цифрлық экономика мен жасыл технологиялар туралы талқылауда.",
+        parliament_session_title: "Парламент отырысы", 
+        parliament_session_desc: "2025 жылға арналған мемлекеттік бюджет туралы заң жобасын қарау және талқылау.",
+        sports_championship_title: "Қазақстан чемпионаты",
+        sports_championship_desc: "Футбол бойынша Қазақстан чемпионатының финалдық ойыны: \"Қайрат\" мен \"Ордабасы\" командалары.",
+        
+        // Locations
+        location_almaty: "Алматы, Риксос қонақ үйі",
+        location_parliament: "Нұр-Сұлтан, Парламент үйі",
+        location_stadium: "Алматы, Орталық стадион"
+    },
+    
+    ru: {
+        login: "Войти",
+        subscribe: "Подписаться",
+        live_coverage: "Прямые трансляции",
+        active_events: "Активные прямые события",
+        auto_update: "Автообновление: 30 сек",
+        live_now: "ПРЯМОЙ ЭФИР",
+        viewers: "зрителей",
+        watch_live: "Смотреть прямо",
+        started_time: "с",
+        current_score: "Текущий счет: 2-1",
+        
+        // Event details
+        economic_forum_title: "Международный экономический форум",
+        economic_forum_desc: "Президент Токаев и международные инвесторы обсуждают цифровую экономику и зеленые технологии.",
+        parliament_session_title: "Заседание парламента",
+        parliament_session_desc: "Рассмотрение и обсуждение проекта закона о государственном бюджете на 2025 год.",
+        sports_championship_title: "Чемпионат Казахстана",
+        sports_championship_desc: "Финальная игра чемпионата Казахстана по футболу: команды \"Кайрат\" и \"Ордабасы\".",
+        
+        // Locations
+        location_almaty: "Алматы, отель Риксос",
+        location_parliament: "Нур-Султан, Дом парламента",
+        location_stadium: "Алматы, Центральный стадион"
+    },
+    
+    en: {
+        login: "Login",
+        subscribe: "Subscribe",
+        live_coverage: "Live Coverage",
+        active_events: "Active Live Events",
+        auto_update: "Auto-update: 30 sec",
+        live_now: "LIVE NOW",
+        viewers: "viewers",
+        watch_live: "Watch Live",
+        started_time: "since",
+        current_score: "Current score: 2-1",
+        
+        // Event details
+        economic_forum_title: "International Economic Forum",
+        economic_forum_desc: "President Tokayev and international investors discuss digital economy and green technologies.",
+        parliament_session_title: "Parliament Session",
+        parliament_session_desc: "Review and discussion of the state budget bill for 2025.",
+        sports_championship_title: "Kazakhstan Championship",
+        sports_championship_desc: "Final game of Kazakhstan football championship: \"Kairat\" vs \"Ordabasy\" teams.",
+        
+        // Locations
+        location_almaty: "Almaty, Rixos Hotel",
+        location_parliament: "Nur-Sultan, Parliament House",
+        location_stadium: "Almaty, Central Stadium"
+    }
+};
+
+let currentLanguage = localStorage.getItem('selectedLanguage') || 'kz';
+
+function switchLanguage(lang) {
+    if (!liveTranslations[lang]) return;
+    
+    currentLanguage = lang;
+    localStorage.setItem('selectedLanguage', lang);
+    
+    // Update button states
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.classList.remove('text-primary', 'font-medium');
+        btn.classList.add('text-text-secondary');
+    });
+    
+    const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+    if (activeBtn) {
+        activeBtn.classList.remove('text-text-secondary');
+        activeBtn.classList.add('text-primary', 'font-medium');
+    }
+    
+    // Update translations
+    const langData = liveTranslations[lang];
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (langData[key]) {
+            element.textContent = langData[key];
+        }
+    });
+    
+    document.documentElement.lang = lang;
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    switchLanguage(currentLanguage);
+    
+    // Simulate live updates
+    setInterval(() => {
+        const viewerCounts = document.querySelectorAll('[data-translate="viewers"]');
+        viewerCounts.forEach(element => {
+            const currentText = element.textContent;
+            const numbers = currentText.match(/[\d.,]+/);
+            if (numbers) {
+                const baseNum = parseFloat(numbers[0].replace(',', '.'));
+                const variation = (Math.random() - 0.5) * 0.2;
+                const newNum = Math.max(0.1, baseNum + variation).toFixed(1);
+                element.textContent = currentText.replace(numbers[0], newNum);
+            }
+        });
+    }, 30000); // Update every 30 seconds
+});
+</script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search & Archive - TengriNews Modern</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Discover and explore TengriNews Modern's comprehensive archive of journalism. Advanced search, filtering, and content discovery tools for researchers, academics, and curious readers." />
+    <meta property="og:title" content="Search & Archive - TengriNews Modern" />
+    <meta property="og:description" content="Comprehensive content discovery and archive search for Kazakhstan's premier digital news platform." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2940&auto=format&fit=crop" />
+    <meta property="og:type" content="website" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftengrinews5665back.builtwithrocket.new&_v=0.1.2"></script>
+</head>
+<body class="bg-background text-text-primary">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-editorial border-b border-border-light sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-3 border-b border-border-light">
+                <div class="flex items-center space-x-6">
+                    <div class="text-sm text-text-secondary">
+                        <span id="current-date"></span> | <span id="current-time"></span>
+                    </div>
+                    <div class="text-sm text-text-secondary">
+                        Almaty: 15°C | Nur-Sultan: 8°C
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="lang-kz" onclick="switchLanguage('kz')" class="text-sm font-medium transition-colors" data-lang="kz">ҚАЗ</button>
+                    <button id="lang-ru" onclick="switchLanguage('ru')" class="text-sm text-text-secondary hover:text-primary" data-lang="ru">РУС</button>
+                    <button id="lang-en" onclick="switchLanguage('en')" class="text-sm text-text-secondary hover:text-primary" data-lang="en">ENG</button>
+                    <div class="w-px h-4 bg-border-light"></div>
+                    <button class="text-sm text-primary hover:text-primary-700 font-medium" data-translate="login">Кіру</button>
+                    <button class="btn-primary text-sm px-4 py-2" data-translate="subscribe">Жазылу</button>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="homepage_digital_news_platform.html" class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.09-.64 3-1.22.91.58 1.91 1.01 3 1.22 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-bold text-primary">TengriNews</h1>
+                                <p class="text-xs text-text-secondary">Modern</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="hidden lg:flex items-center space-x-8">
+                        <a href="homepage_digital_news_platform.html" class="nav-link">Home</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Politics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Economics</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Sports</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Technology</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Culture</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">International</a>
+                        <a href="category_landing_specialized_news_verticals.html" class="nav-link">Opinion</a>
+                        <a href="live_coverage_hub_real_time_events.html" class="nav-link text-accent font-semibold">Live</a>
+                    </div>
+
+                    <!-- Search and Menu -->
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 text-primary bg-primary-50 rounded-md">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="lg:hidden p-2 text-text-secondary hover:text-primary">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-surface border-b border-border-light">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="homepage_digital_news_platform.html" class="text-text-secondary hover:text-primary">Home</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-primary font-medium" data-translate="search_archive">Search & Archive</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-6" data-translate="search_archive">Discover Our Archive</h1>
+                <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">Explore years of authoritative journalism with our comprehensive search and discovery tools. Find the stories that matter to you.</p>
+                
+                <!-- Main Search Bar -->
+                <div class="relative max-w-3xl mx-auto">
+                    <div class="flex">
+                        <input type="text" id="main-search" data-translate="search_placeholder" placeholder="Search articles, topics, journalists, or keywords..." class="flex-1 px-6 py-4 text-lg border border-border-light rounded-l-editorial-lg focus:border-primary focus:ring-2 focus:ring-primary-100 outline-none" />
+                        <button onclick="performSearch()" class="btn-primary px-8 py-4 rounded-l-none rounded-r-editorial-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Search Suggestions -->
+                    <div id="search-suggestions" class="hidden absolute top-full left-0 right-0 bg-white border border-border-light rounded-b-editorial-lg shadow-editorial-lg mt-1 z-10">
+                        <div class="p-4">
+                            <h4 class="text-sm font-semibold text-text-secondary mb-2">Trending Searches</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="setSearch('Digital Economy')" class="px-3 py-1 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100">Digital Economy</button>
+                                <button onclick="setSearch('Climate Summit')" class="px-3 py-1 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100">Climate Summit</button>
+                                <button onclick="setSearch('Kazakhstan Elections')" class="px-3 py-1 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100">Kazakhstan Elections</button>
+                                <button onclick="setSearch('Infrastructure')" class="px-3 py-1 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100">Infrastructure</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice Search Button -->
+                <div class="mt-4">
+                    <button onclick="startVoiceSearch()" class="inline-flex items-center space-x-2 text-primary hover:text-primary-700 font-medium">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                        </svg>
+                        <span>Voice Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Left Sidebar - Filters -->
+            <div class="lg:col-span-1">
+                <div class="content-card p-6 sticky top-24">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold" data-translate="advanced_search">Advanced Filters</h3>
+                        <button onclick="clearFilters()" class="text-sm text-accent hover:text-accent-600">Clear All</button>
+                    </div>
+
+                    <!-- Date Range Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3" data-translate="filter_by_date">Date Range</h4>
+                        <div class="space-y-2">
+                            <input type="date" id="date-from" class="form-input text-sm" />
+                            <input type="date" id="date-to" class="form-input text-sm" />
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <button onclick="setDateRange('today')" class="px-3 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full hover:bg-secondary-200">Today</button>
+                            <button onclick="setDateRange('week')" class="px-3 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full hover:bg-secondary-200">This Week</button>
+                            <button onclick="setDateRange('month')" class="px-3 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full hover:bg-secondary-200">This Month</button>
+                            <button onclick="setDateRange('year')" class="px-3 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full hover:bg-secondary-200">This Year</button>
+                        </div>
+                    </div>
+
+                    <!-- Content Type Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3">Content Type</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" checked />
+                                <span class="text-sm">Articles</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Videos</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Photo Essays</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Infographics</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Live Coverage</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3" data-translate="filter_by_category">Categories</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Politics</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Economics</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Sports</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Technology</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">Culture</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-2 text-primary" />
+                                <span class="text-sm">International</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Journalist Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3" data-translate="filter_by_author">Journalist</h4>
+                        <input type="text" placeholder="Search journalists..." class="form-input text-sm" />
+                    </div>
+
+                    <!-- Saved Searches -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3" data-translate="recent_searches">Saved Searches</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-text-secondary">Digital Economy</span>
+                                <button class="text-xs text-accent hover:text-accent-600">Alert</button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-text-secondary">Climate Policy</span>
+                                <button class="text-xs text-accent hover:text-accent-600">Alert</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Random Article -->
+                    <div class="pt-4 border-t border-border-light">
+                        <button onclick="getRandomArticle()" class="w-full btn-secondary text-sm">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
+                            Random Article
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="lg:col-span-3">
+                <!-- Search Results Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2" data-translate="search_results">Search Results</h2>
+                        <p class="text-text-secondary"><span data-translate="results_found">Found 1,247 articles matching your criteria</span></p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select class="form-input text-sm">
+                            <option>Most Relevant</option>
+                            <option>Most Recent</option>
+                            <option>Most Read</option>
+                            <option>Oldest First</option>
+                        </select>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="setViewMode('list')" class="p-2 text-text-secondary hover:text-primary view-mode-btn active">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                                </svg>
+                            </button>
+                            <button onclick="setViewMode('grid')" class="p-2 text-text-secondary hover:text-primary view-mode-btn">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Results -->
+                <div id="search-results" class="space-y-6">
+                    <!-- Result Item 1 -->
+                    <article class="content-card p-6">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=200&auto=format&fit=crop" alt="Digital Economy" class="w-24 h-24 object-cover rounded-md flex-shrink-0" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=200'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-category">ECONOMICS</span>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">March 15, 2024</span>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">15 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 leading-tight">
+                                    <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                        Kazakhstan Unveils Ambitious Digital Economy Roadmap for 2025-2030
+                                    </a>
+                                </h3>
+                                <p class="text-text-secondary mb-3">President announces comprehensive strategy to transform Kazakhstan into Central Asia's digital hub, targeting $50 billion in tech investments and creating 500,000 new jobs in the digital sector...</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop" alt="Journalist" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_150.jpg'; this.onerror=null;" />
+                                        <span class="text-sm font-medium">Aida Nazarbayeva</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="p-2 text-text-secondary hover:text-primary">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="p-2 text-text-secondary hover:text-primary">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Result Item 2 -->
+                    <article class="content-card p-6">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Climate Summit" class="w-24 h-24 object-cover rounded-md flex-shrink-0" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=200&auto=format&fit=crop'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-category">ENVIRONMENT</span>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">March 12, 2024</span>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">12 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 leading-tight">
+                                    <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                        Almaty Climate Summit Achieves Historic Agreement on Central Asian Green Transition
+                                    </a>
+                                </h3>
+                                <p class="text-text-secondary mb-3">Five Central Asian nations commit to carbon neutrality by 2050, with Kazakhstan leading renewable energy initiatives and cross-border environmental cooperation frameworks...</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_150.jpg" alt="Journalist" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                        <span class="text-sm font-medium">Dmitry Volkov</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="p-2 text-text-secondary hover:text-primary">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="p-2 text-text-secondary hover:text-primary">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Result Item 3 -->
+                    <article class="content-card p-6">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=200&auto=format&fit=crop" alt="Technology" class="w-24 h-24 object-cover rounded-md flex-shrink-0" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=200'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <span class="text-category">TECHNOLOGY</span>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">March 10, 2024</span>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">20 min read</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3 leading-tight">
+                                    <a href="article_page_immersive_storytelling.html" class="hover:text-primary transition-colors">
+                                        Inside Kazakhstan's Silicon Valley: How Almaty is Becoming Central Asia's Tech Capital
+                                    </a>
+                                </h3>
+                                <p class="text-text-secondary mb-3">An in-depth investigation into the rapid growth of Kazakhstan's tech sector, featuring exclusive interviews with startup founders, government officials, and international investors...</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_150.jpg" alt="Journalist" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop'; this.onerror=null;" />
+                                        <span class="text-sm font-medium">Sarah Chen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="p-2 text-text-secondary hover:text-primary">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="p-2 text-text-secondary hover:text-primary">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex items-center justify-between mt-8 pt-6 border-t border-border-light">
+                    <div class="text-sm text-text-secondary">
+                        Showing 1-10 of 1,247 results
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="px-3 py-2 text-sm text-text-secondary hover:text-primary border border-border-light rounded-md hover:border-primary">Previous</button>
+                        <button class="px-3 py-2 text-sm bg-primary text-white rounded-md">1</button>
+                        <button class="px-3 py-2 text-sm text-text-secondary hover:text-primary border border-border-light rounded-md hover:border-primary">2</button>
+                        <button class="px-3 py-2 text-sm text-text-secondary hover:text-primary border border-border-light rounded-md hover:border-primary">3</button>
+                        <span class="px-3 py-2 text-sm text-text-secondary">...</span>
+                        <button class="px-3 py-2 text-sm text-text-secondary hover:text-primary border border-border-light rounded-md hover:border-primary">42</button>
+                        <button class="px-3 py-2 text-sm text-text-secondary hover:text-primary border border-border-light rounded-md hover:border-primary">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Collections Section -->
+        <section class="mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Special Collections</h2>
+                <p class="text-xl text-text-secondary max-w-2xl mx-auto">Curated archives highlighting our most impactful journalism and major story developments</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Collection 1 -->
+                <div class="content-card overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop" alt="Economic Development" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Kazakhstan's Economic Development</h3>
+                        <p class="text-text-secondary mb-4">Comprehensive coverage of Kazakhstan's economic transformation from 2020-2024, including major policy changes, international partnerships, and market developments.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">247 articles</span>
+                            <a href="category_landing_specialized_news_verticals.html" class="text-primary font-medium hover:underline">Explore Collection</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection 2 -->
+                <div class="content-card overflow-hidden">
+                    <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Central Asian Relations" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=800&auto=format&fit=crop'; this.onerror=null;" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Central Asian Relations</h3>
+                        <p class="text-text-secondary mb-4">In-depth analysis of diplomatic relationships, trade agreements, and cultural exchanges between Kazakhstan and neighboring Central Asian nations.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">189 articles</span>
+                            <a href="category_landing_specialized_news_verticals.html" class="text-primary font-medium hover:underline">Explore Collection</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection 3 -->
+                <div class="content-card overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f93e586?q=80&w=800&auto=format&fit=crop" alt="Award-Winning Journalism" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800'; this.onerror=null;" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Award-Winning Journalism</h3>
+                        <p class="text-text-secondary mb-4">Our most recognized investigative pieces, feature stories, and multimedia projects that have earned national and international journalism awards.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-text-secondary">52 articles</span>
+                            <a href="category_landing_specialized_news_verticals.html" class="text-primary font-medium hover:underline">Explore Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization Section -->
+        <section class="mt-16 bg-surface rounded-editorial-lg p-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4">Content Trends & Analytics</h2>
+                <p class="text-xl text-text-secondary">Discover patterns in our journalism and explore trending topics over time</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Chart Placeholder 1 -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Most Read Articles by Year</h3>
+                    <div class="h-64 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-md flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 text-primary mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                            </svg>
+                            <p class="text-text-secondary">Interactive chart showing reading trends</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart Placeholder 2 -->
+                <div class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">Topic Evolution Timeline</h3>
+                    <div class="h-64 bg-gradient-to-br from-accent-50 to-success-50 rounded-md flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 text-accent mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12z"/>
+                            </svg>
+                            <p class="text-text-secondary">Timeline of trending topics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Export Tools Section -->
+        <section class="mt-16">
+            <div class="content-card p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Research & Export Tools</h2>
+                    <p class="text-text-secondary">Professional tools for researchers, academics, and journalists</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Citation Export</h3>
+                        <p class="text-sm text-text-secondary mb-4">Export article citations in APA, MLA, or Chicago format</p>
+                        <button class="btn-secondary text-sm">Export Citations</button>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-success-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Bulk Download</h3>
+                        <p class="text-sm text-text-secondary mb-4">Download multiple articles as PDF or text files</p>
+                        <button class="btn-secondary text-sm">Download Articles</button>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-accent-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18 20V10"/>
+                                <path d="M12 20V4"/>
+                                <path d="M6 20v-6"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold mb-2">Data Analysis</h3>
+                        <p class="text-sm text-text-secondary mb-4">Export search data for statistical analysis</p>
+                        <button class="btn-secondary text-sm">Export Data</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.09-.64 3-1.22.91.58 1.91 1.01 3 1.22 5.16-1 9-5.45 9-11V7l-10-5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">TengriNews Modern</h3>
+                        </div>
+                    </div>
+                    <p class="text-secondary-300 text-sm mb-4">Kazakhstan's premier digital news platform delivering authoritative journalism and real-time coverage across all major topics.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-secondary-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.222.085.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">News Categories</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Politics</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Economics</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Sports</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Technology</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">Culture</a></li>
+                        <li><a href="category_landing_specialized_news_verticals.html" class="text-secondary-300 hover:text-white transition-colors">International</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="live_coverage_hub_real_time_events.html" class="text-secondary-300 hover:text-white transition-colors">Live Coverage</a></li>
+                        <li><a href="search_archive_content_discovery.html" class="text-secondary-300 hover:text-white transition-colors">News Archive</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Newsletter</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Mobile App</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">RSS Feeds</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Press Releases</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Legal -->
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Editorial Standards</a></li>
+                        <li><a href="about_editorial_standards_trust_building.html" class="text-secondary-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-secondary-300 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-secondary-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-secondary-400 text-sm">© 2025 TengriNews Modern. All Rights Reserved.</p>
+                <p class="text-secondary-400 text-sm mt-2 md:mt-0">Trusted journalism for informed citizens</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('main-search').value;
+            if (searchTerm.trim()) {
+                console.log('Searching for:', searchTerm);
+                // Implement search logic here
+            }
+        }
+
+        function setSearch(term) {
+            document.getElementById('main-search').value = term;
+            document.getElementById('search-suggestions').classList.add('hidden');
+            performSearch();
+        }
+
+        // Voice search functionality
+        function startVoiceSearch() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('main-search').value = transcript;
+                    performSearch();
+                };
+
+                recognition.start();
+            } else {
+                alert('Voice search is not supported in your browser');
+            }
+        }
+
+        // Filter functions
+        function clearFilters() {
+            // Clear all filter inputs
+            document.getElementById('date-from').value = '';
+            document.getElementById('date-to').value = '';
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[type="checkbox"]')[0].checked = true; // Keep "Articles" checked
+        }
+
+        function setDateRange(range) {
+            const today = new Date();
+            const fromDate = document.getElementById('date-from');
+            const toDate = document.getElementById('date-to');
+            
+            toDate.value = today.toISOString().split('T')[0];
+            
+            switch(range) {
+                case 'today':
+                    fromDate.value = today.toISOString().split('T')[0];
+                    break;
+                case 'week':
+                    const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+                    fromDate.value = weekAgo.toISOString().split('T')[0];
+                    break;
+                case 'month':
+                    const monthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+                    fromDate.value = monthAgo.toISOString().split('T')[0];
+                    break;
+                case 'year':
+                    const yearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+                    fromDate.value = yearAgo.toISOString().split('T')[0];
+                    break;
+            }
+        }
+
+        // View mode toggle
+        function setViewMode(mode) {
+            const buttons = document.querySelectorAll('.view-mode-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('button').classList.add('active');
+            
+            // Implement view mode change logic here
+            console.log('View mode changed to:', mode);
+        }
+
+        // Random article function
+        function getRandomArticle() {
+            // Simulate random article selection
+            const articles = [
+                'article_page_immersive_storytelling.html',
+                'category_landing_specialized_news_verticals.html'
+            ];
+            const randomArticle = articles[Math.floor(Math.random() * articles.length)];
+            window.location.href = randomArticle;
+        }
+
+        // Search suggestions toggle
+        document.getElementById('main-search').addEventListener('focus', function() {
+            document.getElementById('search-suggestions').classList.remove('hidden');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('#main-search') && !event.target.closest('#search-suggestions')) {
+                document.getElementById('search-suggestions').classList.add('hidden');
+            }
+        });
+
+        // Enter key search
+        document.getElementById('main-search').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                timeZone: 'Asia/Almaty'
+            };
+            
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions) + ' ALMT';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            setInterval(updateDateTime, 60000); // Update every minute
+        });
+    </script>
+
+    <!-- Add language switching functionality -->
+    <script>
+        // Search and archive translations
+        const searchTranslations = {
+            kz: {
+                login: "Кіру",
+                subscribe: "Жазылу",
+                search_archive: "Іздеу және мұрағат",
+                search_placeholder: "Жаңалықтар, тақырыптар, журналистер іздеу...",
+                advanced_search: "Кеңейтілген іздеу",
+                filter_by_date: "Күн бойынша сүзу",
+                filter_by_category: "Санат бойынша сүзу",
+                filter_by_author: "Автор бойынша сүзу",
+                search_results: "Іздеу нәтижелері",
+                results_found: "нәтиже табылды",
+                no_results: "Нәтиже табылмады",
+                recent_searches: "Соңғы іздеулер",
+                popular_topics: "Танымал тақырыптар",
+                archive_by_month: "Ай бойынша мұрағат",
+                load_more: "Көбірек жүктеу"
+            },
+            ru: {
+                login: "Войти",
+                subscribe: "Подписаться",
+                search_archive: "Поиск и архив",
+                search_placeholder: "Поиск новостей, тем, журналистов...",
+                advanced_search: "Расширенный поиск",
+                filter_by_date: "Фильтр по дате",
+                filter_by_category: "Фильтр по категории",
+                filter_by_author: "Фильтр по автору",
+                search_results: "Результаты поиска",
+                results_found: "результатов найдено",
+                no_results: "Результаты не найдены",
+                recent_searches: "Недавние поиски",
+                popular_topics: "Популярные темы",
+                archive_by_month: "Архив по месяцам",
+                load_more: "Загрузить еще"
+            },
+            en: {
+                login: "Login",
+                subscribe: "Subscribe",
+                search_archive: "Search & Archive",
+                search_placeholder: "Search news, topics, journalists...",
+                advanced_search: "Advanced Search",
+                filter_by_date: "Filter by Date",
+                filter_by_category: "Filter by Category",
+                filter_by_author: "Filter by Author",
+                search_results: "Search Results",
+                results_found: "results found",
+                no_results: "No results found",
+                recent_searches: "Recent Searches",
+                popular_topics: "Popular Topics",
+                archive_by_month: "Archive by Month",
+                load_more: "Load More"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('selectedLanguage') || 'kz';
+
+        function switchLanguage(lang) {
+            if (!searchTranslations[lang]) return;
+            
+            currentLanguage = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Update button states
+            document.querySelectorAll('[data-lang]').forEach(btn => {
+                btn.classList.remove('text-primary', 'font-medium');
+                btn.classList.add('text-text-secondary');
+            });
+            
+            const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-text-secondary');
+                activeBtn.classList.add('text-primary', 'font-medium');
+            }
+            
+            // Update translations
+            const langData = searchTranslations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (langData[key]) {
+                    if (element.tagName === 'INPUT' && element.type === 'text') {
+                        element.placeholder = langData[key];
+                    } else {
+                        element.textContent = langData[key];
+                    }
+                }
+            });
+            
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage(currentLanguage);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

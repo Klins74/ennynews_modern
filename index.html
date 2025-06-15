@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TengriNews Modern - Central Asia's Digital News Platform</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .redirect-container {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 16px;
+        }
+        
+        .tagline {
+            color: #64748B;
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #E2E8F0;
+            border-top: 4px solid #1E40AF;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 24px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .redirect-text {
+            color: #475569;
+            font-size: 1rem;
+            margin-bottom: 24px;
+        }
+        
+        .page-list {
+            background: #F8FAFC;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 24px;
+            text-align: left;
+        }
+        
+        .page-list h3 {
+            color: #1E293B;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .page-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .page-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #E2E8F0;
+            color: #64748B;
+            font-size: 0.875rem;
+        }
+        
+        .page-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .manual-nav {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .manual-nav a {
+            display: inline-block;
+            background: #1E40AF;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 250ms ease-out;
+        }
+        
+        .manual-nav a:hover {
+            background: #1D4ED8;
+        }
+        
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .language-btn {
+            padding: 8px 16px;
+            border: 1px solid #E2E8F0;
+            background: white;
+            color: #64748B;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 250ms ease-out;
+        }
+        
+        .language-btn:hover {
+            border-color: #1E40AF;
+            color: #1E40AF;
+        }
+        
+        .language-btn.active {
+            background: #1E40AF;
+            color: white;
+            border-color: #1E40AF;
+        }
+    </style>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Ftengrinews5665back.builtwithrocket.new&_v=0.1.2"></script>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="logo">TengriNews Modern</div>
+        <div class="tagline">Central Asia's Premier Digital News Platform</div>
+        
+        <div class="loading-spinner"></div>
+        <div class="redirect-text">Redirecting to homepage...</div>
+        
+        <div class="page-list">
+            <h3 data-translate="available_pages">Available Pages:</h3>
+            <ul>
+                <li data-translate="page_homepage">Homepage - Digital News Platform</li>
+                <li data-translate="page_article">Article Page - Immersive Storytelling</li>
+                <li data-translate="page_category">Category Landing - Specialized News Verticals</li>
+                <li data-translate="page_live">Live Coverage Hub - Real-time Events</li>
+                <li data-translate="page_search">Search & Archive - Content Discovery</li>
+                <li data-translate="page_about">About - Editorial Standards & Trust Building</li>
+            </ul>
+        </div>
+        
+        <div class="manual-nav">
+            <div class="language-selector mb-4">
+                <button onclick="switchLanguage('kz')" id="lang-kz" class="language-btn active" data-lang="kz">ҚАЗ</button>
+                <button onclick="switchLanguage('ru')" id="lang-ru" class="language-btn" data-lang="ru">РУС</button>
+                <button onclick="switchLanguage('en')" id="lang-en" class="language-btn" data-lang="en">ENG</button>
+            </div>
+            <a href="pages/homepage_digital_news_platform.html" data-translate="enter_site">TengriNews Modern-ға кіру</a>
+        </div>
+    </div>
+
+    <script>
+        // Landing page translations
+        const landingTranslations = {
+            kz: {
+                enter_site: "TengriNews Modern-ға кіру",
+                redirecting: "Басты бетке бағыттау...",
+                tagline: "Орталық Азияның жетекші цифрлық жаңалықтар платформасы",
+                available_pages: "Қол жетімді беттер:",
+                page_homepage: "Басты бет - Цифрлық жаңалықтар платформасы",
+                page_article: "Мақала беті - Қызықты баяндау",
+                page_category: "Санат беті - Мамандандырылған жаңалықтар",
+                page_live: "Тікелей хабарлар - Нақты уақыттағы оқиғалар",
+                page_search: "Іздеу және мұрағат - Мазмұн табу",
+                page_about: "Біз туралы - Редакциялық стандарттар"
+            },
+            ru: {
+                enter_site: "Войти в TengriNews Modern",
+                redirecting: "Перенаправление на главную...",
+                tagline: "Ведущая цифровая новостная платформа Центральной Азии",
+                available_pages: "Доступные страницы:",
+                page_homepage: "Главная - Цифровая новостная платформа",
+                page_article: "Страница статьи - Захватывающее повествование",
+                page_category: "Страница категории - Специализированные новости",
+                page_live: "Прямые трансляции - События в реальном времени",
+                page_search: "Поиск и архив - Поиск контента",
+                page_about: "О нас - Редакционные стандарты"
+            },
+            en: {
+                enter_site: "Enter TengriNews Modern",
+                redirecting: "Redirecting to homepage...",
+                tagline: "Central Asia's Premier Digital News Platform",
+                available_pages: "Available Pages:",
+                page_homepage: "Homepage - Digital News Platform",
+                page_article: "Article Page - Immersive Storytelling",
+                page_category: "Category Landing - Specialized News Verticals",
+                page_live: "Live Coverage Hub - Real-time Events",
+                page_search: "Search & Archive - Content Discovery",
+                page_about: "About - Editorial Standards & Trust Building"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('selectedLanguage') || 'kz';
+
+        function switchLanguage(lang) {
+            if (!landingTranslations[lang]) return;
+            
+            currentLanguage = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Update button states
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            
+            // Update translations
+            const langData = landingTranslations[lang];
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (langData[key]) {
+                    element.textContent = langData[key];
+                }
+            });
+            
+            // Update other text elements
+            const taglineEl = document.querySelector('.tagline');
+            if (taglineEl && langData.tagline) {
+                taglineEl.textContent = langData.tagline;
+            }
+            
+            const redirectTextEl = document.querySelector('.redirect-text');
+            if (redirectTextEl && langData.redirecting) {
+                redirectTextEl.textContent = langData.redirecting;
+            }
+            
+            document.documentElement.lang = lang;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage(currentLanguage);
+        });
+        
+        // Auto-redirect to homepage after 3 seconds
+        setTimeout(function() {
+            window.location.href = 'pages/homepage_digital_news_platform.html';
+        }, 3000);
+        
+        // Preload the main page for faster navigation
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = 'pages/homepage_digital_news_platform.html';
+        document.head.appendChild(link);
+    </script>
+<script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+</body>
+</html>
